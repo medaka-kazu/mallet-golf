@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0f6b3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="マレットスコア">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>マレットスコア</title>
+<style>
+:root{--green:#0f6b3a;--light:#eaf7ef;--line:#c9d8cd;--text:#111;--accent:#ffcc4d}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;background:#f7fbf8;color:var(--text);font-size:18px}header{background:var(--green);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0002}h1{font-size:24px;margin:0}.sub{font-size:14px;opacity:.9}.wrap{padding:14px;max-width:1100px;margin:auto}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 2px 8px #0000000d}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}button{font-size:18px;border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:white;font-weight:700;min-height:48px}button.secondary{background:#e8eee9;color:#111}button.warn{background:#b8422d}.big{font-size:22px;padding:14px 18px}.namegrid{display:grid;grid-template-columns:1fr;gap:10px}.namebox{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;background:var(--light);padding:10px;border-radius:12px}.namebox input[type=text]{width:100%;font-size:22px;padding:12px;border:2px solid var(--line);border-radius:10px}.namebox input[type=checkbox]{width:30px;height:30px}.hint{font-size:15px;color:#47554b}.hidden{display:none!important}.scorebtns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.scorebtns button{font-size:26px;min-height:58px;background:#1f7d48}.scorecell{background:#fff;border:2px solid #d6e0d8;border-radius:12px;min-height:48px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800}.scorecell.active{border-color:#ff9f1a;background:#fff8e6}.vertical-player{display:grid;grid-template-columns:1.2fr 82px;gap:10px;align-items:center;margin:9px 0}.vhead{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-weight:800;background:#eaf7ef;padding:10px;border-radius:12px;text-align:center}.holebar{font-size:22px;font-weight:900;background:#eaf7ef;border-radius:14px;padding:12px;margin-bottom:10px;text-align:center}.navholes{display:flex;gap:8px;overflow:auto;padding:8px 0}.navholes button{min-width:48px;padding:8px 6px;font-size:16px;background:#e8eee9;color:#111}.navholes button.now{background:var(--green);color:#fff}.total{font-size:18px;border-collapse:collapse;width:100%}.total th,.total td{border:1px solid var(--line);padding:8px;text-align:center}.landscapeBox{overflow:auto}.landtable{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:17px}.landtable th,.landtable td{border:1px solid var(--line);padding:7px;text-align:center;background:#fff;min-width:72px}.landtable th:first-child,.landtable td:first-child{position:sticky;left:0;background:#eaf7ef;z-index:2;min-width:54px}.landtable th:nth-child(2),.landtable td:nth-child(2){position:sticky;left:54px;background:#eaf7ef;z-index:2;min-width:54px}.landtable .scorecell{min-height:42px;font-size:23px}.copyline{background:#fff8d8;border:1px solid #f1d47a;border-radius:12px;padding:10px;margin:10px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.courseTabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 16px}.courseTabs button{font-size:22px;border:2px solid #b8c9bd;background:#eef5f0;color:#0074d9}.courseTabs button.active{background:var(--green);color:#fff;border-color:#0b4c2a}.scoreCardTitle{font-size:30px;font-weight:900;color:#0b4c2a;margin:6px 0}.courseSub{font-size:16px;color:#326245;margin:0 0 8px}.scoreTable{border-collapse:collapse;width:100%;table-layout:fixed;background:#fff;border:3px solid #2d6848}.scoreTable th,.scoreTable td{border:2px solid #7a9a88;text-align:center;padding:8px 4px;font-size:21px}.scoreTable th{background:#eaf7ef;color:#25583e;font-weight:900}.scoreTable .holeCol{width:10%}.scoreTable .parCol{width:10%}.scoreTable .distCol{width:13%}.scoreTable .playerHead{font-size:18px}.scoreTable .scoreIn{font-size:30px;font-weight:900;color:#0b2d1b;min-height:48px;display:flex;align-items:center;justify-content:center}.scoreTable .copyBtn{font-size:15px;min-height:36px;padding:4px 6px;border-radius:8px;background:#eef5f0;color:#0b4c2a}.scoreTable tfoot td{background:#f1f7f3;font-weight:900}.modal{position:fixed;inset:0;background:#0008;z-index:20;display:flex;align-items:end;justify-content:center}.panel{background:#fff;border-radius:20px 20px 0 0;padding:14px;width:100%;max-width:620px}.panelTitle{font-size:20px;font-weight:900;margin-bottom:8px}@media (orientation:landscape){body{font-size:16px}header{padding:8px 12px}h1{font-size:20px}.wrap{padding:8px}.card{padding:10px;margin:8px 0}button{min-height:42px;padding:9px 12px}.scorebtns button{min-height:48px;font-size:23px}}@media (min-width:700px){.namegrid{grid-template-columns:1fr 1fr}.vertical-player{grid-template-columns:1fr 90px}}
+
+/* Ver.0.6 スマホ画面内に収めるための自動縮小 */
+body.scoreMode{background:#fff;overflow-x:hidden}
+@media (display-mode: standalone){header{padding-top:calc(10px + env(safe-area-inset-top));}body.scoreMode .wrap{padding-top:env(safe-area-inset-top);}}
+body.scoreMode header{display:none}
+body.scoreMode .wrap{padding:6px;max-width:none}
+body.scoreMode .card{margin:6px 0;padding:8px;border-radius:12px;box-shadow:none}
+body.scoreMode #score>.card.row{padding:6px;gap:6px}
+body.scoreMode #score>.card.row button{min-height:36px;font-size:14px;padding:6px 10px}
+body.scoreMode .courseTabs{gap:8px;margin:4px 0 8px}
+body.scoreMode .courseTabs button{font-size:clamp(15px,4.5vw,20px);min-height:42px;padding:7px 6px}
+body.scoreMode .scoreCardTitle{font-size:clamp(20px,6vw,28px);margin:2px 0}
+body.scoreMode .courseSub{font-size:12px;margin:0 0 4px}
+body.scoreMode .scoreTable{border-width:2px;table-layout:fixed;width:100%}
+body.scoreMode .scoreTable th,body.scoreMode .scoreTable td{padding:clamp(2px,.8vw,6px) 1px;font-size:clamp(12px,3.4vw,19px);line-height:1.1;word-break:break-all}
+body.scoreMode .scoreTable .holeCol{width:9%}body.scoreMode .scoreTable .parCol{width:9%}body.scoreMode .scoreTable .distCol{width:11%}
+body.scoreMode .scoreTable .playerHead{font-size:clamp(11px,3vw,16px)}
+body.scoreMode .scoreTable .scoreIn{font-size:clamp(20px,6.5vw,30px);min-height:clamp(29px,8.8vw,44px)}
+body.scoreMode .scoreTable .copyBtn{font-size:clamp(10px,2.8vw,13px);min-height:28px;padding:2px;border-radius:6px}
+body.scoreMode .scoreTable tfoot td{font-size:clamp(12px,3.3vw,18px)}
+body.scoreMode .landscapeBox{overflow:visible;width:100%}
+body.scoreMode .landtable{width:100%;min-width:0;table-layout:fixed;font-size:clamp(10px,1.9vw,16px)}
+body.scoreMode .landtable th,body.scoreMode .landtable td{min-width:0;padding:clamp(2px,.8vw,6px) 1px;line-height:1.05;word-break:break-all}
+body.scoreMode .landtable th:first-child,body.scoreMode .landtable td:first-child,body.scoreMode .landtable th:nth-child(2),body.scoreMode .landtable td:nth-child(2){position:static;min-width:0}
+body.scoreMode .landtable .scorecell{font-size:clamp(16px,3vw,24px);min-height:clamp(26px,5.8vh,40px);border-radius:6px;border-width:1px}
+body.scoreMode #landscape h2{font-size:clamp(18px,3vw,24px);margin:2px 0 4px}
+body.scoreMode #landscape .hint{display:none}
+@media (orientation:landscape){body.scoreMode .wrap{padding:4px 8px}body.scoreMode .card{margin:4px 0;padding:6px}body.scoreMode .landtable .scorecell{min-height:32px}}
+@media (max-height:700px){body.scoreMode .courseSub{display:none}body.scoreMode .scoreTable .scoreIn{min-height:28px}body.scoreMode .scoreTable th,body.scoreMode .scoreTable td{padding:1px}}
+
+
+.appGuide{background:#fff8d8;border:1px solid #f1d47a;border-radius:14px;padding:12px;margin:12px 0;font-weight:700;color:#31553d}
+</style>
+</head>
+<body>
+<header><h1>マレットゴルフ ⛳ スコア表</h1><div class="sub">健康づくり・お遊び用 / アプリ確認版 Ver.0.8</div></header>
+<div class="wrap">
+<section id="home" class="card">
+<div class="appGuide">Ver.0.8：ホーム画面追加を想定したアプリ風表示です。Safari/Chromeで開いて「ホーム画面に追加」してください。</div>
+<h2>1. メンバー登録・今日プレー</h2>
+<p class="hint">名前を入れて、今日プレーする人にチェック。4人以下は縦画面、5〜7人は横画面用です。</p>
+<div id="names" class="namegrid"></div>
+<div class="row" style="margin-top:12px">
+<button onclick="sampleNames()" class="secondary">サンプル名を入れる</button>
+<button onclick="clearScores()" class="secondary">スコアだけ消す</button>
+<button onclick="startRound()" class="big">スコア表を開く</button>
+</div>
+</section>
+<section id="score" class="hidden">
+<div class="card row"><button onclick="showHome()" class="secondary">← メンバーへ</button><button onclick="clearScores()" class="warn">スコア消去</button><span id="modeText" class="hint"></span></div>
+<div id="vertical" class="card hidden"></div>
+<div id="landscape" class="card hidden"></div>
+
+</section>
+</div>
+<div id="modal" class="modal hidden"><div class="panel"><div class="panelTitle" id="modalTitle"></div><div class="scorebtns" id="scoreBtns"></div><button class="secondary" style="width:100%;margin-top:10px" onclick="closeModal()">閉じる</button></div></div>
+<script>
+const holes=[
+{h:1,d:38,p:4},{h:2,d:22,p:3},{h:3,d:37,p:4},{h:4,d:25,p:3},{h:5,d:70,p:4},{h:6,d:36,p:3},{h:7,d:47,p:3},{h:8,d:50,p:3},{h:9,d:45,p:4},
+{h:10,d:48,p:3},{h:11,d:30,p:4},{h:12,d:42,p:3},{h:13,d:25,p:3},{h:14,d:22,p:3},{h:15,d:33,p:4},{h:16,d:36,p:3},{h:17,d:24,p:3},{h:18,d:27,p:3}
+];
+let players=Array.from({length:10},(_,i)=>({name:'',play:i<4}));let scores={};let curHole=1;let curCourse=0;let target=null;
+function load(){try{const s=JSON.parse(localStorage.malletV02||'{}');if(s.players)players=s.players;if(s.scores)scores=s.scores;}catch(e){} renderNames()}function save(){localStorage.malletV02=JSON.stringify({players,scores})}
+function renderNames(){const el=document.getElementById('names');el.innerHTML='';players.forEach((p,i)=>{el.insertAdjacentHTML('beforeend',`<label class="namebox"><input type="checkbox" ${p.play?'checked':''} onchange="players[${i}].play=this.checked;save()"><input type="text" placeholder="名前 ${i+1}" value="${esc(p.name)}" oninput="players[${i}].name=this.value;save()"></label>`)});}
+function esc(s){return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;')}
+function selected(){return players.map((p,i)=>({...p,idx:i})).filter(p=>p.play&&p.name.trim()).slice(0,7)}
+function sampleNames(){['山田','佐藤','鈴木','田中','伊藤','高橋','渡辺'].forEach((n,i)=>{players[i].name=n;players[i].play=i<4});save();renderNames()}
+function startRound(){const ps=selected();if(ps.length<1){alert('今日プレーする人の名前を入れてチェックしてください。');return} if(ps.length>7){alert('最大7人までです。');return}document.body.classList.add('scoreMode');document.getElementById('home').classList.add('hidden');document.getElementById('score').classList.remove('hidden');document.getElementById('modeText').textContent=ps.length<=4?'4人以下：縦画面レイアウト':'5〜7人：横画面レイアウト';renderScore()}
+function showHome(){document.body.classList.remove('scoreMode');document.getElementById('score').classList.add('hidden');document.getElementById('home').classList.remove('hidden');renderNames()}
+function scoreKey(h,idx){return h+'_'+idx}function getScore(h,idx){return scores[scoreKey(h,idx)]||''}function setScore(h,idx,val){scores[scoreKey(h,idx)]=val;save();renderScore()}
+function renderScore(){const ps=selected(); if(ps.length<=4){renderVertical(ps)}else{renderLand(ps)}}
+function renderVertical(ps){
+ document.getElementById('vertical').classList.remove('hidden');
+ document.getElementById('landscape').classList.add('hidden');
+ const courseName=curCourse===0?'外回りコース':'内回りコース';
+ const startH=curCourse===0?1:10;
+ const list=holes.slice(startH-1,startH+8);
+ let html=`<div class="courseTabs"><button class="${curCourse===0?'active':''}" onclick="curCourse=0;renderScore()">外回りコース</button><button class="${curCourse===1?'active':''}" onclick="curCourse=1;renderScore()">内回りコース</button></div>`;
+ html+=`<div class="scoreCardTitle">● ${courseName}</div><div class="courseSub">健康づくり・お遊び用</div>`;
+ html+='<table class="scoreTable"><thead><tr><th class="holeCol">ホール</th><th class="parCol">Par</th><th class="distCol">距離</th>';
+ ps.forEach(p=>html+=`<th class="playerHead">${esc(p.name)}</th>`);
+ html+='<th style="width:12%">同じ</th></tr></thead><tbody>';
+ list.forEach(h=>{
+   html+=`<tr><td>${h.h}</td><td>${h.p}</td><td>${h.d}</td>`;
+   ps.forEach(p=>html+=`<td onclick="openPicker(${h.h},${p.idx})"><div class="scoreIn">${getScore(h.h,p.idx)||''}</div></td>`);
+   html+=`<td><button class="copyBtn" onclick="copyFirst(${h.h})">全員<br>同じ</button></td></tr>`;
+ });
+ const parSum=list.reduce((a,h)=>a+h.p,0), distSum=list.reduce((a,h)=>a+h.d,0);
+ html+=`</tbody><tfoot><tr><td>${curCourse===0?'外回計':'内回計'}</td><td>${parSum}</td><td>${distSum}</td>`;
+ ps.forEach(p=>{let sum=0;list.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td>${sum||''}</td>`});
+ html+='<td></td></tr>';
+ if(curCourse===1){
+   const allPar=holes.reduce((a,h)=>a+h.p,0), allDist=holes.reduce((a,h)=>a+h.d,0);
+   html+=`<tr><td>合計</td><td>${allPar}</td><td>${allDist}</td>`;
+   ps.forEach(p=>{let sum=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td>${sum||''}</td>`});
+   html+='<td></td></tr>';
+ }
+ html+='</tfoot></table>';
+ html+=`<div class="row" style="margin-top:12px"><button class="secondary" onclick="curCourse=0;renderScore()">外回りへ</button><button onclick="curCourse=1;renderScore()">内回りへ</button></div>`;
+ document.getElementById('vertical').innerHTML=html;
+}
+function renderLand(ps){document.getElementById('vertical').classList.add('hidden');document.getElementById('landscape').classList.remove('hidden');let html='<h2>横画面用スコア表</h2><p class="hint">スマホを横にしてください。距離は省略し、ホールとPARだけ表示します。</p><div class="landscapeBox"><table class="landtable"><tr><th>H</th><th>PAR</th>';ps.forEach(p=>html+=`<th>${esc(p.name)}</th>`);html+='<th>同じ</th></tr>';holes.forEach(h=>{html+=`<tr><td>${h.h}</td><td>${h.p}</td>`;ps.forEach(p=>html+=`<td><div class="scorecell" onclick="openPicker(${h.h},${p.idx})">${getScore(h.h,p.idx)||'-'}</div></td>`);html+=`<td><button onclick="copyFirst(${h.h})" class="secondary">全員</button></td></tr>`});const parSum=holes.reduce((a,h)=>a+h.p,0);html+=`<tr><td><b>合計</b></td><td><b>${parSum}</b></td>`;ps.forEach(p=>{let sum=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td><b>${sum||''}</b></td>`});html+='<td></td></tr></table></div>';document.getElementById('landscape').innerHTML=html}
+function renderTotals(ps){let html='<tr><th>名前</th><th>合計</th><th>入力済</th></tr>';ps.forEach(p=>{let sum=0,c=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v){sum+=v;c++}});html+=`<tr><td>${esc(p.name)}</td><td>${c?sum:'-'}</td><td>${c}/18</td></tr>`});document.getElementById('totals').innerHTML=html}
+function openPicker(h,idx){target={h,idx};const p=players[idx];document.getElementById('modalTitle').textContent=`${h}番　${p.name}さんのスコア`;const b=document.getElementById('scoreBtns');b.innerHTML='';[1,2,3,4,5,6,7,8,9,10].forEach(n=>b.insertAdjacentHTML('beforeend',`<button onclick="choose(${n})">${n}</button>`));b.insertAdjacentHTML('beforeend','<button class="secondary" onclick="choose(\'\')">消す</button>');document.getElementById('modal').classList.remove('hidden')}
+function choose(n){if(target)setScore(target.h,target.idx,n);closeModal()}function closeModal(){document.getElementById('modal').classList.add('hidden')}
+function copyFirst(h){const ps=selected();if(!ps.length)return;const v=getScore(h,ps[0].idx);if(!v){alert('先頭の人にスコアを入れてから押してください。');return}ps.forEach(p=>scores[scoreKey(h,p.idx)]=v);save();renderScore()}
+function clearScores(){if(confirm('スコアを全部消しますか？名前は残ります。')){scores={};save();renderScore?.()}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}load();
+</script>
+</body></html>
