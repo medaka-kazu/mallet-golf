@@ -68,7 +68,7 @@ body.scoreMode .landtable.land7 .copyMini{font-size:10px;line-height:1.05;min-he
 <p class="hint">名前を入れて、今日プレーする人にチェック。4人以下は縦画面、5〜7人は横画面用です。</p>
 <div id="names" class="namegrid"></div>
 <div class="row" style="margin-top:12px">
-<button onclick="sampleNames()" class="secondary">サンプル名を入れる</button>
+
 <button onclick="clearScores()" class="secondary">スコアだけ消す</button>
 <button onclick="startRound()" class="big">スコア表を開く</button>
 </div>
@@ -108,7 +108,7 @@ function renderVertical(ps){
  ps.forEach(p=>html+=`<th class="playerHead">${esc(p.name)}</th>`);
  html+='<th style="width:12%">同じ</th></tr></thead><tbody>';
  list.forEach(h=>{
-   html+=`<tr><td>${h.h}</td><td>${h.p}</td><td>${h.d}</td>`;
+   html+=`<tr style="${h.h===9||h.h===18?'border-bottom:4px solid #000;':''}"><td>${h.h}</td><td>${h.p}</td><td>${h.d}</td>`;
    ps.forEach(p=>html+=`<td onclick="openPicker(${h.h},${p.idx})"><div class="scoreIn">${getScore(h.h,p.idx)||''}</div></td>`);
    html+=`<td><button class="copyBtn" onclick="copyFirst(${h.h})">全員<br>同じ</button></td></tr>`;
  });
@@ -163,7 +163,8 @@ function renderLand(ps){
  document.getElementById('landscape').innerHTML=html;
 }
 function renderTotals(ps){let html='<tr><th>名前</th><th>合計</th><th>入力済</th></tr>';ps.forEach(p=>{let sum=0,c=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v){sum+=v;c++}});html+=`<tr><td>${esc(p.name)}</td><td>${c?sum:'-'}</td><td>${c}/18</td></tr>`});document.getElementById('totals').innerHTML=html}
-function openPicker(h,idx){target={h,idx};const p=players[idx];document.getElementById('modalTitle').textContent=`${h}番　${p.name}さんのスコア`;const b=document.getElementById('scoreBtns');b.innerHTML='';[1,2,3,4,5,6,7,8,9,10].forEach(n=>b.insertAdjacentHTML('beforeend',`<button onclick="choose(${n})">${n}</button>`));b.insertAdjacentHTML('beforeend','<button class="secondary" onclick="choose(\'\')">消す</button>');document.getElementById('modal').classList.remove('hidden')}
+function openPicker(h,idx){target={h,idx};const p=players[idx];document.getElementById('modalTitle').textContent=`${h}番　${p.name}さんのスコア`;const b=document.getElementById('scoreBtns');b.innerHTML='';[1,2,3,4,5,6,7,8,9,10].forEach(n=>b.insertAdjacentHTML('beforeend',`<button onclick="choose(${n})">${n}</button>`));b.insertAdjacentHTML('beforeend',`<button onclick="moreScore()">＋</button>`);b.insertAdjacentHTML('beforeend','<button class="secondary" onclick="choose(\'\')">消す</button>');document.getElementById('modal').classList.remove('hidden')}
+function moreScore(){const v=prompt('11以上のスコアを入力','11');if(v!==null&&v!=='')choose(parseInt(v));}
 function choose(n){if(target)setScore(target.h,target.idx,n);closeModal()}function closeModal(){document.getElementById('modal').classList.add('hidden')}
 function copyFirst(h){const ps=selected();if(!ps.length)return;const v=getScore(h,ps[0].idx);if(!v){alert('先頭の人にスコアを入れてから押してください。');return}ps.forEach(p=>scores[scoreKey(h,p.idx)]=v);save();renderScore()}
 function clearScores(){if(confirm('スコアを全部消しますか？名前は残ります。')){scores={};save();renderScore?.()}}
