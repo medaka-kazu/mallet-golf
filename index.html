@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <title>マレットスコア</title>
 <style>
-:root{--green:#0f6b3a;--light:#eaf7ef;--line:#c9d8cd;--text:#111;--accent:#ffcc4d}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;background:#f7fbf8;color:var(--text);font-size:18px}header{background:var(--green);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0002}h1{font-size:24px;margin:0}.sub{font-size:14px;opacity:.9}.wrap{padding:14px;max-width:1100px;margin:auto}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 2px 8px #0000000d}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}button{font-size:18px;border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:white;font-weight:700;min-height:48px}button.secondary{background:#e8eee9;color:#111}button.warn{background:#b8422d}.big{font-size:22px;padding:14px 18px}.namegrid{display:grid;grid-template-columns:1fr;gap:10px}.namebox{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;background:var(--light);padding:10px;border-radius:12px}.namebox input[type=text]{width:100%;font-size:22px;padding:12px;border:2px solid var(--line);border-radius:10px}.namebox input[type=checkbox]{width:30px;height:30px}.hint{font-size:15px;color:#47554b}.hidden{display:none!important}.scorebtns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.scorebtns button{font-size:26px;min-height:58px;background:#1f7d48}.scorecell{background:#fff;border:2px solid #d6e0d8;border-radius:12px;min-height:48px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800}.scorecell.active{border-color:#ff9f1a;background:#fff8e6}.vertical-player{display:grid;grid-template-columns:1.2fr 82px;gap:10px;align-items:center;margin:9px 0}.vhead{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-weight:800;background:#eaf7ef;padding:10px;border-radius:12px;text-align:center}.holebar{font-size:22px;font-weight:900;background:#eaf7ef;border-radius:14px;padding:12px;margin-bottom:10px;text-align:center}.navholes{display:flex;gap:8px;overflow:auto;padding:8px 0}.navholes button{min-width:48px;padding:8px 6px;font-size:16px;background:#e8eee9;color:#111}.navholes button.now{background:var(--green);color:#fff}.total{font-size:18px;border-collapse:collapse;width:100%}.total th,.total td{border:1px solid var(--line);padding:8px;text-align:center}.landscapeBox{overflow:auto}.landtable{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:17px}.landtable th,.landtable td{border:1px solid var(--line);padding:7px;text-align:center;background:#fff;min-width:72px}.landtable th:first-child,.landtable td:first-child{position:sticky;left:0;background:#eaf7ef;z-index:2;min-width:54px}.landtable th:nth-child(2),.landtable td:nth-child(2){position:sticky;left:54px;background:#eaf7ef;z-index:2;min-width:54px}.landtable .scorecell{min-height:42px;font-size:23px}.copyline{background:#fff8d8;border:1px solid #f1d47a;border-radius:12px;padding:10px;margin:10px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.courseTabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 16px}.courseTabs button{font-size:22px;border:2px solid #b8c9bd;background:#eef5f0;color:#0074d9}.courseTabs button.active{background:var(--green);color:#fff;border-color:#0b4c2a}.scoreCardTitle{font-size:30px;font-weight:900;color:#0b4c2a;margin:6px 0}.courseSub{font-size:16px;color:#326245;margin:0 0 8px}.scoreTable{border-collapse:collapse;width:100%;table-layout:fixed;background:#fff;border:3px solid #2d6848}.scoreTable th,.scoreTable td{border:2px solid #7a9a88;text-align:center;padding:8px 4px;font-size:21px}.scoreTable th{background:#eaf7ef;color:#25583e;font-weight:900}.scoreTable .holeCol{width:10%}.scoreTable .parCol{width:10%}.scoreTable .distCol{width:13%}.scoreTable .playerHead{font-size:18px}.scoreTable .scoreIn{font-size:30px;font-weight:900;color:#0b2d1b;min-height:48px;display:flex;align-items:center;justify-content:center}.scoreTable .copyBtn{font-size:15px;min-height:36px;padding:4px 6px;border-radius:8px;background:#eef5f0;color:#0b4c2a}.scoreTable tfoot td{background:#f1f7f3;font-weight:900}.modal{position:fixed;inset:0;background:#0008;z-index:20;display:flex;align-items:end;justify-content:center}.panel{background:#fff;border-radius:20px 20px 0 0;padding:14px;width:100%;max-width:620px}.panelTitle{font-size:20px;font-weight:900;margin-bottom:8px}@media (orientation:landscape){body{font-size:16px}header{padding:8px 12px}h1{font-size:20px}.wrap{padding:8px}.card{padding:10px;margin:8px 0}button{min-height:42px;padding:9px 12px}.scorebtns button{min-height:48px;font-size:23px}}@media (min-width:700px){.namegrid{grid-template-columns:1fr 1fr}.vertical-player{grid-template-columns:1fr 90px}}
+:root{--green:#0f6b3a;--light:#eaf7ef;--line:#c9d8cd;--text:#111;--accent:#ffcc4d}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;background:#f7fbf8;color:var(--text);font-size:18px}header{background:var(--green);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0002}h1{font-size:24px;margin:0}.sub{font-size:14px;opacity:.9}.wrap{padding:14px;max-width:1100px;margin:auto}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 2px 8px #0000000d}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}button{font-size:18px;border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:white;font-weight:700;min-height:48px}button.secondary{background:#e8eee9;color:#111}button.warn{background:#b8422d}.big{font-size:22px;padding:14px 18px}.namegrid{display:grid;grid-template-columns:1fr;gap:10px}.namebox{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;background:var(--light);padding:10px;border-radius:12px}.namebox input[type=text]{width:100%;font-size:22px;padding:12px;border:2px solid var(--line);border-radius:10px}.namebox input[type=checkbox]{width:30px;height:30px}.hint{font-size:15px;color:#47554b}.hidden{display:none!important}.scorebtns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.scorebtns button{font-size:26px;min-height:58px;background:#1f7d48}.scorecell{background:#fff;border:2px solid #d6e0d8;border-radius:12px;min-height:48px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800}.scorecell.active{border-color:#ff9f1a;background:#fff8e6}.vertical-player{display:grid;grid-template-columns:1.2fr 82px;gap:10px;align-items:center;margin:9px 0}.vhead{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-weight:800;background:#eaf7ef;padding:10px;border-radius:12px;text-align:center}.holebar{font-size:22px;font-weight:900;background:#eaf7ef;border-radius:14px;padding:12px;margin-bottom:10px;text-align:center}.navholes{display:flex;gap:8px;overflow:auto;padding:8px 0}.navholes button{min-width:48px;padding:8px 6px;font-size:16px;background:#e8eee9;color:#111}.navholes button.now{background:var(--green);color:#fff}.total{font-size:18px;border-collapse:collapse;width:100%}.total th,.total td{border:1px solid var(--line);padding:8px;text-align:center}.landscapeBox{overflow:auto}.landtable{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:17px}.landtable th,.landtable td{border:1px solid var(--line);padding:6px 3px;text-align:center;background:#fff;min-width:62px}.landtable th:first-child,.landtable td:first-child{position:sticky;left:0;background:#eaf7ef;z-index:2;min-width:54px}.landtable th:nth-child(2),.landtable td:nth-child(2){position:sticky;left:54px;background:#eaf7ef;z-index:2;min-width:54px}.landtable .scorecell{min-height:38px;font-size:22px}.landtable .scorecell.empty{color:#bbb;background:#f7faf8}.copyline{background:#fff8d8;border:1px solid #f1d47a;border-radius:12px;padding:10px;margin:10px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.courseTabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 16px}.courseTabs button{font-size:22px;border:2px solid #b8c9bd;background:#eef5f0;color:#0074d9}.courseTabs button.active{background:var(--green);color:#fff;border-color:#0b4c2a}.scoreCardTitle{font-size:30px;font-weight:900;color:#0b4c2a;margin:6px 0}.courseSub{font-size:16px;color:#326245;margin:0 0 8px}.scoreTable{border-collapse:collapse;width:100%;table-layout:fixed;background:#fff;border:3px solid #2d6848}.scoreTable th,.scoreTable td{border:2px solid #7a9a88;text-align:center;padding:8px 4px;font-size:21px}.scoreTable th{background:#eaf7ef;color:#25583e;font-weight:900}.scoreTable .holeCol{width:10%}.scoreTable .parCol{width:10%}.scoreTable .distCol{width:13%}.scoreTable .playerHead{font-size:18px}.scoreTable .scoreIn{font-size:30px;font-weight:900;color:#0b2d1b;min-height:48px;display:flex;align-items:center;justify-content:center}.scoreTable .copyBtn{font-size:15px;min-height:36px;padding:4px 6px;border-radius:8px;background:#eef5f0;color:#0b4c2a}.scoreTable tfoot td{background:#f1f7f3;font-weight:900}.modal{position:fixed;inset:0;background:#0008;z-index:20;display:flex;align-items:end;justify-content:center}.panel{background:#fff;border-radius:20px 20px 0 0;padding:14px;width:100%;max-width:620px}.panelTitle{font-size:20px;font-weight:900;margin-bottom:8px}@media (orientation:landscape){body{font-size:16px}header{padding:8px 12px}h1{font-size:20px}.wrap{padding:8px}.card{padding:10px;margin:8px 0}button{min-height:42px;padding:9px 12px}.scorebtns button{min-height:48px;font-size:23px}}@media (min-width:700px){.namegrid{grid-template-columns:1fr 1fr}.vertical-player{grid-template-columns:1fr 90px}}
 
 /* Ver.0.6 スマホ画面内に収めるための自動縮小 */
 body.scoreMode{background:#fff;overflow-x:hidden}
@@ -47,10 +47,10 @@ body.scoreMode #landscape .hint{display:none}
 </style>
 </head>
 <body>
-<header><h1>マレットゴルフ ⛳ スコア表</h1><div class="sub">健康づくり・お遊び用 / アプリ確認版 Ver.0.8</div></header>
+<header><h1>マレットゴルフ ⛳ スコア表</h1><div class="sub">健康づくり・お遊び用 / 最終確認版 Ver.1.2</div></header>
 <div class="wrap">
 <section id="home" class="card">
-<div class="appGuide">Ver.0.8：ホーム画面追加を想定したアプリ風表示です。Safari/Chromeで開いて「ホーム画面に追加」してください。</div>
+<div class="appGuide">Ver.1.2：昨夜の最終確認版。5〜7人は横画面で7人分表示、外回りは「計」、内回りは「合計」。</div>
 <h2>1. メンバー登録・今日プレー</h2>
 <p class="hint">名前を入れて、今日プレーする人にチェック。4人以下は縦画面、5〜7人は横画面用です。</p>
 <div id="names" class="namegrid"></div>
@@ -99,11 +99,13 @@ function renderVertical(ps){
    ps.forEach(p=>html+=`<td onclick="openPicker(${h.h},${p.idx})"><div class="scoreIn">${getScore(h.h,p.idx)||''}</div></td>`);
    html+=`<td><button class="copyBtn" onclick="copyFirst(${h.h})">全員<br>同じ</button></td></tr>`;
  });
- const parSum=list.reduce((a,h)=>a+h.p,0), distSum=list.reduce((a,h)=>a+h.d,0);
- html+=`</tbody><tfoot><tr><td>${curCourse===0?'外回計':'内回計'}</td><td>${parSum}</td><td>${distSum}</td>`;
- ps.forEach(p=>{let sum=0;list.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td>${sum||''}</td>`});
- html+='<td></td></tr>';
- if(curCourse===1){
+ html+='</tbody><tfoot>';
+ if(curCourse===0){
+   const parSum=list.reduce((a,h)=>a+h.p,0), distSum=list.reduce((a,h)=>a+h.d,0);
+   html+=`<tr><td>計</td><td>${parSum}</td><td>${distSum}</td>`;
+   ps.forEach(p=>{let sum=0;list.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td>${sum||''}</td>`});
+   html+='<td></td></tr>';
+ }else{
    const allPar=holes.reduce((a,h)=>a+h.p,0), allDist=holes.reduce((a,h)=>a+h.d,0);
    html+=`<tr><td>合計</td><td>${allPar}</td><td>${allDist}</td>`;
    ps.forEach(p=>{let sum=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td>${sum||''}</td>`});
@@ -113,7 +115,40 @@ function renderVertical(ps){
  html+=`<div class="row" style="margin-top:12px"><button class="secondary" onclick="curCourse=0;renderScore()">外回りへ</button><button onclick="curCourse=1;renderScore()">内回りへ</button></div>`;
  document.getElementById('vertical').innerHTML=html;
 }
-function renderLand(ps){document.getElementById('vertical').classList.add('hidden');document.getElementById('landscape').classList.remove('hidden');let html='<h2>横画面用スコア表</h2><p class="hint">スマホを横にしてください。距離は省略し、ホールとPARだけ表示します。</p><div class="landscapeBox"><table class="landtable"><tr><th>H</th><th>PAR</th>';ps.forEach(p=>html+=`<th>${esc(p.name)}</th>`);html+='<th>同じ</th></tr>';holes.forEach(h=>{html+=`<tr><td>${h.h}</td><td>${h.p}</td>`;ps.forEach(p=>html+=`<td><div class="scorecell" onclick="openPicker(${h.h},${p.idx})">${getScore(h.h,p.idx)||'-'}</div></td>`);html+=`<td><button onclick="copyFirst(${h.h})" class="secondary">全員</button></td></tr>`});const parSum=holes.reduce((a,h)=>a+h.p,0);html+=`<tr><td><b>合計</b></td><td><b>${parSum}</b></td>`;ps.forEach(p=>{let sum=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td><b>${sum||''}</b></td>`});html+='<td></td></tr></table></div>';document.getElementById('landscape').innerHTML=html}
+function renderLand(ps){
+ document.getElementById('vertical').classList.add('hidden');
+ document.getElementById('landscape').classList.remove('hidden');
+ const courseName=curCourse===0?'外回りコース':'内回りコース';
+ const startH=curCourse===0?1:10;
+ const list=holes.slice(startH-1,startH+8);
+ const slots=Array.from({length:7},(_,i)=>ps[i]||{name:'',idx:null});
+ let html=`<div class="courseTabs"><button class="${curCourse===0?'active':''}" onclick="curCourse=0;renderScore()">外回りコース</button><button class="${curCourse===1?'active':''}" onclick="curCourse=1;renderScore()">内回りコース</button></div>`;
+ html+=`<h2>${courseName}（横画面・5〜7人）</h2><p class="hint">スマホを横にしてください。7人分の名前欄を表示します。距離は省略します。</p>`;
+ html+='<div class="landscapeBox"><table class="landtable"><tr><th>H</th><th>PAR</th>';
+ slots.forEach((p,i)=>html+=`<th>${esc(p.name||('名前'+(i+1)))}</th>`);
+ html+='<th>同じ</th></tr>';
+ list.forEach(h=>{
+   html+=`<tr><td>${h.h}</td><td>${h.p}</td>`;
+   slots.forEach(p=>{
+     if(p.idx===null){ html+='<td><div class="scorecell empty">-</div></td>'; }
+     else{ html+=`<td><div class="scorecell" onclick="openPicker(${h.h},${p.idx})">${getScore(h.h,p.idx)||'-'}</div></td>`; }
+   });
+   html+=`<td><button onclick="copyFirst(${h.h})" class="secondary">全員</button></td></tr>`;
+ });
+ html+='<tr>';
+ if(curCourse===0){
+   const parSum=list.reduce((a,h)=>a+h.p,0);
+   html+=`<td><b>計</b></td><td><b>${parSum}</b></td>`;
+   slots.forEach(p=>{if(p.idx===null){html+='<td><b>-</b></td>'}else{let sum=0;list.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td><b>${sum||''}</b></td>`}});
+ }else{
+   const allPar=holes.reduce((a,h)=>a+h.p,0);
+   html+=`<td><b>合計</b></td><td><b>${allPar}</b></td>`;
+   slots.forEach(p=>{if(p.idx===null){html+='<td><b>-</b></td>'}else{let sum=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v)sum+=v});html+=`<td><b>${sum||''}</b></td>`}});
+ }
+ html+='<td></td></tr></table></div>';
+ html+=`<div class="row" style="margin-top:10px"><button class="secondary" onclick="curCourse=0;renderScore()">外回りへ</button><button onclick="curCourse=1;renderScore()">内回りへ</button></div>`;
+ document.getElementById('landscape').innerHTML=html;
+}
 function renderTotals(ps){let html='<tr><th>名前</th><th>合計</th><th>入力済</th></tr>';ps.forEach(p=>{let sum=0,c=0;holes.forEach(h=>{const v=parseInt(getScore(h.h,p.idx));if(v){sum+=v;c++}});html+=`<tr><td>${esc(p.name)}</td><td>${c?sum:'-'}</td><td>${c}/18</td></tr>`});document.getElementById('totals').innerHTML=html}
 function openPicker(h,idx){target={h,idx};const p=players[idx];document.getElementById('modalTitle').textContent=`${h}番　${p.name}さんのスコア`;const b=document.getElementById('scoreBtns');b.innerHTML='';[1,2,3,4,5,6,7,8,9,10].forEach(n=>b.insertAdjacentHTML('beforeend',`<button onclick="choose(${n})">${n}</button>`));b.insertAdjacentHTML('beforeend','<button class="secondary" onclick="choose(\'\')">消す</button>');document.getElementById('modal').classList.remove('hidden')}
 function choose(n){if(target)setScore(target.h,target.idx,n);closeModal()}function closeModal(){document.getElementById('modal').classList.add('hidden')}
