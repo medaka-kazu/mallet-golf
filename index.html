@@ -2,77 +2,282 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>マレットゴルフ Ver.2.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#136b3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>マレットゴルフ Ver.2.0 試作初版</title>
 <style>
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#f7faf8;color:#183025}
-.wrap{max-width:1100px;margin:auto;padding:10px}
-.card{background:#fff;border:1px solid #cbded2;border-radius:16px;padding:12px;margin-bottom:12px}
-h1{color:#086336;margin:0 0 10px}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-button{font:inherit;border:0;border-radius:12px;padding:10px 14px;font-weight:700}
-.mode{background:#eef4ef}.mode.active{background:#0b6b3a;color:#fff}
-.members{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.member{border:2px solid #b9cfc1;border-radius:12px;padding:8px}
-.member input{width:100%;font-size:20px;border:0;border-bottom:1px solid #bbb}
-.quick{display:flex;gap:6px;overflow-x:auto}
-.quick button{min-width:54px;background:#fff;border:2px solid #0b6b3a;color:#0b6b3a;font-size:22px}
-table{border-collapse:collapse;width:100%;min-width:720px}
-th,td{border:2px solid #8eaf9b;text-align:center;padding:4px;height:46px}
-th{background:#eef7f1;color:#165b38}
-td.score{cursor:pointer}.filled{background:#fff8df}.birdie{color:#df2435;font-weight:800}.eagle{color:#1769d2;font-weight:800}
-.tablewrap{overflow:auto}
-.modal{position:fixed;inset:0;background:#0006;display:none;align-items:center;justify-content:center}.modal.open{display:flex}
-.panel{background:white;padding:16px;border-radius:18px;width:min(420px,92vw)}
-.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.keys button{height:60px;background:#fff;border:1px solid #ccc;font-size:24px}
-.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}.nav .next{background:#0b6b3a;color:white}
-@media(max-width:700px){.members{grid-template-columns:repeat(2,1fr)}th,td{font-size:13px;height:40px}table{min-width:100%}}
+:root{
+  --green:#136b3a;--green2:#e9f5ed;--line:#8caf99;--cream:#fff4d6;
+  --red:#d71920;--blue:#0a55c2;--ink:#17241c;--bg:#f4f8f5;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.app{max-width:1180px;margin:auto;padding:10px 10px 92px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+h1{font-size:clamp(22px,5vw,34px);margin:0;color:var(--green)}
+.version{font-weight:800;color:#fff;background:var(--green);padding:6px 10px;border-radius:999px}
+.card{background:#fff;border:1px solid #c8d8ce;border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 2px 8px #00000010}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{border:0;border-radius:12px;padding:11px 14px;font-weight:800;cursor:pointer}
+.primary{background:var(--green);color:#fff}
+.secondary{background:#edf2ee;color:#24452f;border:1px solid #b9c9bf}
+.danger{background:#fff0f0;color:#a41414;border:1px solid #e9b2b2}
+.mode{min-width:66px;background:#eef4ef;color:var(--green);border:2px solid #b5cbbd}
+.mode.active{background:var(--green);color:#fff;border-color:var(--green)}
+.members{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.member{border:2px solid #bfd0c5;border-radius:12px;padding:7px;background:#fbfdfb}
+.member small{display:block;color:#537060;font-weight:700;margin-bottom:3px}
+.member input{width:100%;font-size:20px;font-weight:800;border:0;border-bottom:2px solid #a8bcae;padding:5px;background:transparent}
+.hint{font-size:14px;color:#52645a;margin-top:7px}
+.score-wrap{overflow:auto;border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:720px;background:#fff}
+th,td{border:1.5px solid var(--line);text-align:center;height:42px;padding:2px}
+th{position:sticky;top:0;background:#eaf5ed;color:#145c35;z-index:2;font-weight:900}
+th.name{font-size:18px;min-width:90px}
+td.hole{width:62px;font-weight:900;background:#f4f7f5}
+td.par{width:48px;font-weight:900;background:#f4f7f5}
+td.score{font-size:23px;font-weight:900;min-width:82px;cursor:pointer;background:#fff}
+td.score.filled{background:var(--cream)}
+td.score.birdie{color:var(--red)}
+td.score.eagle{color:var(--blue)}
+tr.half td{border-top:4px solid #222}
+.same{display:block;margin:2px auto 0;padding:2px 5px;border-radius:7px;background:#edf5ef;color:var(--green);font-size:11px;font-weight:900}
+tfoot td{height:58px;background:#eaf5ed;border-top:4px solid var(--green);font-size:24px;font-weight:900}
+tfoot td:first-child{font-size:22px;color:var(--green)}
+.bottom-bar{position:fixed;left:0;right:0;bottom:0;background:#ffffffed;border-top:1px solid #c5d4ca;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));z-index:10}
+.bottom-inner{max-width:1180px;margin:auto;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:10px;z-index:30}
+.modal.open{display:flex}
+.panel{width:min(500px,96vw);background:#fff;border-radius:20px;padding:14px;box-shadow:0 20px 70px #0008}
+.panel h2{margin:0 0 6px;color:var(--green);font-size:25px}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.keys button{height:60px;font-size:26px;background:#fff;border:2px solid #9db5a6;color:#173c28}
+.keys .plus{border-color:#d13b3b;color:#b31313}
+.keys .erase{background:#f1f1f1;color:#444}
+.modal-nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.print-title{display:none}
+.credit{text-align:right;font-size:11px;color:#647168;margin:4px 4px 0}
+@media(max-width:700px){
+  .members{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{padding:9px}
+  th.name{font-size:16px}
+  td.score{font-size:20px;min-width:72px}
+}
+@media(orientation:portrait) and (max-width:700px){
+  body.people5 .rotate-note{display:block}
+}
+.rotate-note{display:none;background:#fff3cd;border:1px solid #e4c45f;color:#715800;padding:8px;border-radius:10px;margin-bottom:8px;font-weight:800}
+@media print{
+  body{background:#fff}
+  .app{max-width:none;padding:0}
+  header,.setup,.bottom-bar,.hint,.rotate-note,.same{display:none!important}
+  .print-title{display:block;text-align:center;font-size:24px;font-weight:900;margin:0 0 8px}
+  .card{border:0;box-shadow:none;padding:0}
+  .score-wrap{overflow:visible}
+  table{min-width:0}
+  th,td{height:31px;font-size:13px}
+  th.name{font-size:14px;min-width:0}
+  td.score{font-size:15px;min-width:0}
+  tfoot td{height:42px;font-size:18px}
+  .credit{display:block}
+  @page{size:A4 landscape;margin:8mm}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-<section class="card">
-<h1>⛳ マレットゴルフ Ver.2.0</h1>
-<div class="row" id="modes"></div>
-<div class="members" id="members"></div>
-</section>
-<section class="card">
-<h3>全員同じスコア</h3>
-<div class="quick" id="quick"></div>
-</section>
-<section class="card">
-<div class="tablewrap">
-<table>
-<thead><tr id="head"></tr></thead>
-<tbody id="body"></tbody>
-<tfoot><tr id="total"></tr></tfoot>
-</table>
+<div class="app">
+  <header>
+    <h1>⛳ マレットゴルフ スコア表</h1>
+    <div class="version">Ver.2.0 試作初版</div>
+  </header>
+
+  <section class="card setup">
+    <div class="toolbar">
+      <strong>人数：</strong>
+      <div id="modes" class="toolbar"></div>
+      <button id="swapBtn" class="secondary">メンバー差し替え</button>
+      <button id="clearBtn" class="danger">スコアだけ消す</button>
+    </div>
+    <div id="members" class="members"></div>
+    <div class="hint">4人は縦画面向け、5〜7人は横画面向けです。名前はいつでも変更できます。</div>
+  </section>
+
+  <div class="rotate-note">5〜7人ではスマホを横向きにすると見やすくなります。</div>
+
+  <section class="card">
+    <div class="print-title">マレットゴルフ スコア表</div>
+    <div class="score-wrap">
+      <table>
+        <thead><tr id="head"></tr></thead>
+        <tbody id="body"></tbody>
+        <tfoot><tr id="total"></tr></tfoot>
+      </table>
+    </div>
+    <div class="credit">by navi & kazu</div>
+  </section>
 </div>
-</section>
+
+<div class="bottom-bar">
+  <div class="bottom-inner">
+    <button id="printBtn" class="secondary">印刷</button>
+    <button id="saveBtn" class="secondary">保存</button>
+    <button id="restoreBtn" class="secondary">読込</button>
+  </div>
 </div>
-<div class="modal" id="modal">
-<div class="panel">
-<h2 id="title"></h2><div id="meta"></div>
-<div class="keys" id="keys"></div>
-<div class="nav">
-<button id="prev">前へ</button><button id="close">閉じる</button><button id="next" class="next">次へ</button>
+
+<div id="modal" class="modal">
+  <div class="panel">
+    <h2 id="modalTitle"></h2>
+    <div id="modalMeta"></div>
+    <div id="keys" class="keys"></div>
+    <div class="modal-nav">
+      <button id="prevBtn" class="secondary">前へ</button>
+      <button id="closeBtn" class="secondary">閉じる</button>
+      <button id="nextBtn" class="primary">次へ</button>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 <script>
-const pars=[3,4,3,4,5,3,4,3,4,3,4,3,4,5,3,4,3,4];
-let count=4,names=["岡田","石橋","中西","松本","","",""],scores=Array.from({length:18},()=>Array(7).fill(null)),cur={h:0,p:0};
-const $=x=>document.getElementById(x);
-function renderModes(){$("modes").innerHTML="";[4,5,6,7].forEach(n=>{let b=document.createElement("button");b.textContent=n+"人";b.className="mode"+(n===count?" active":"");b.onclick=()=>{count=n;renderAll()};$("modes").appendChild(b)})}
-function renderMembers(){$("members").innerHTML="";for(let i=0;i<count;i++){let d=document.createElement("div");d.className="member";d.innerHTML=`<small>プレーヤー${i+1}</small><input value="${names[i]||""}" placeholder="名前">`;d.querySelector("input").oninput=e=>{names[i]=e.target.value;renderTable()};$("members").appendChild(d)}}
-function renderQuick(){$("quick").innerHTML="";[1,2,3,4,5,6,7,8,9].forEach(n=>{let b=document.createElement("button");b.textContent=n===9?"＋":n;b.onclick=()=>fillSame(n);$("quick").appendChild(b)})}
-function renderTable(){$("head").innerHTML="<th>H</th><th>Par</th>"+Array.from({length:count},(_,i)=>`<th>${names[i]||"未設定"}</th>`).join("");$("body").innerHTML="";for(let h=0;h<18;h++){let tr=document.createElement("tr");tr.innerHTML=`<td>${h+1}</td><td>${pars[h]}</td>`;for(let p=0;p<count;p++){let td=document.createElement("td");td.className="score";let v=scores[h][p];if(v!==null){td.textContent=v;td.classList.add("filled");if(v===pars[h]-1)td.classList.add("birdie");if(v<=pars[h]-2)td.classList.add("eagle")}td.onclick=()=>open(h,p);tr.appendChild(td)}$("body").appendChild(tr)}$("total").innerHTML="<td>合計</td><td>"+pars.reduce((a,b)=>a+b,0)+"</td>"+Array.from({length:count},(_,p)=>"<td>"+scores.map(r=>r[p]).filter(v=>v!==null).reduce((a,b)=>a+b,0)+"</td>").join("")}
-function open(h,p){cur={h,p};$("title").textContent=`Hole ${h+1} ${names[p]||"未設定"}`;$("meta").textContent="Par "+pars[h];$("keys").innerHTML="";[1,2,3,4,5,6,7,8,9].forEach(n=>{let b=document.createElement("button");b.textContent=n===9?"＋":n;b.onclick=()=>setScore(n===9?9:n,n!==9);$("keys").appendChild(b)});$("modal").classList.add("open")}
-function setScore(v,move){scores[cur.h][cur.p]=v;renderTable();if(move)moveCur(1)}
-function moveCur(step){let i=cur.h*count+cur.p+step;if(i<0)i=0;if(i>=18*count){$("modal").classList.remove("open");return}open(Math.floor(i/count),i%count)}
-function fillSame(v){for(let p=0;p<count;p++)scores[cur.h][p]=v;renderTable()}
-$("prev").onclick=()=>moveCur(-1);$("next").onclick=()=>moveCur(1);$("close").onclick=()=>$("modal").classList.remove("open");
-function renderAll(){renderModes();renderMembers();renderQuick();renderTable()}
+const PARS=[4,3,4,3,4,3,3,3,4,3,4,3,3,3,4,3,4,3];
+const STORAGE_KEY="mallet-golf-v2";
+let state={
+  count:4,
+  names:["岡田","石橋","松本","田中","","",""],
+  scores:Array.from({length:18},()=>Array(7).fill(null)),
+  cursor:{h:0,p:0}
+};
+const $=id=>document.getElementById(id);
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderModes(){
+  $("modes").innerHTML="";
+  [4,5,6,7].forEach(n=>{
+    const b=document.createElement("button");
+    b.className="mode"+(state.count===n?" active":"");
+    b.textContent=n+"人";
+    b.onclick=()=>{state.count=n;document.body.classList.toggle("people5",n>=5);renderAll()};
+    $("modes").appendChild(b);
+  });
+}
+function renderMembers(){
+  $("members").innerHTML="";
+  for(let i=0;i<Math.max(4,state.count);i++){
+    const d=document.createElement("div");
+    d.className="member";
+    d.innerHTML=`<small>プレーヤー ${i+1}</small><input value="${esc(state.names[i]||"")}" placeholder="名前 ${i+1}">`;
+    d.querySelector("input").oninput=e=>{state.names[i]=e.target.value;renderTable()};
+    $("members").appendChild(d);
+  }
+}
+function scoreClass(v,par){
+  if(v==null)return "";
+  if(v<=par-2)return " filled eagle";
+  if(v===par-1)return " filled birdie";
+  return " filled";
+}
+function renderTable(){
+  $("head").innerHTML="<th>H</th><th>PAR</th>"+Array.from({length:state.count},(_,i)=>`<th class="name">${esc(state.names[i]||("名前"+(i+1)))}</th>`).join("");
+  const body=$("body"); body.innerHTML="";
+  for(let h=0;h<18;h++){
+    const tr=document.createElement("tr");
+    if(h===9)tr.className="half";
+    let hole=`<td class="hole">${h+1}<button class="same" data-same="${h}">全員同じ</button></td><td class="par">${PARS[h]}</td>`;
+    tr.innerHTML=hole;
+    for(let p=0;p<state.count;p++){
+      const td=document.createElement("td");
+      const v=state.scores[h][p];
+      td.className="score"+scoreClass(v,PARS[h]);
+      td.textContent=v==null?"":v;
+      td.onclick=()=>openModal(h,p);
+      tr.appendChild(td);
+    }
+    body.appendChild(tr);
+  }
+  body.querySelectorAll("[data-same]").forEach(btn=>{
+    btn.onclick=e=>{e.stopPropagation();openSameModal(Number(btn.dataset.same))};
+  });
+  const totals=Array.from({length:state.count},(_,p)=>state.scores.reduce((a,row)=>a+(Number(row[p])||0),0));
+  $("total").innerHTML=`<td>合計</td><td>${PARS.reduce((a,b)=>a+b,0)}</td>`+totals.map(v=>`<td>${v||""}</td>`).join("");
+}
+function renderAll(){renderModes();renderMembers();renderTable()}
+function openModal(h,p){
+  state.cursor={h,p};
+  $("modalTitle").textContent=`${h+1}番　${state.names[p]||("名前"+(p+1))}さん`;
+  $("modalMeta").textContent=`PAR ${PARS[h]}　入力後は次の人へ自動移動`;
+  buildKeys(v=>setScore(v,true));
+  $("modal").classList.add("open");
+}
+function openSameModal(h){
+  state.cursor={h,p:0};
+  $("modalTitle").textContent=`${h+1}番　全員同じスコア`;
+  $("modalMeta").textContent=`PAR ${PARS[h]}　選んだ数字を全員へ入力`;
+  buildKeys(v=>{
+    for(let p=0;p<state.count;p++)state.scores[h][p]=v;
+    renderTable();$("modal").classList.remove("open");
+  });
+  $("modal").classList.add("open");
+}
+function buildKeys(handler){
+  const keys=$("keys"); keys.innerHTML="";
+  [1,2,3,4,5,6,7,8].forEach(v=>addKey(String(v),()=>handler(v)));
+  addKey("＋","plus",()=>{
+    const raw=prompt("9以上のスコアを入力してください","9");
+    const n=Number(raw);
+    if(Number.isInteger(n)&&n>=9&&n<=99)handler(n);
+  });
+  addKey("消す","erase",()=>handler(null));
+}
+function addKey(label,clsOrFn,maybeFn){
+  const b=document.createElement("button");
+  b.textContent=label;
+  let fn=clsOrFn;
+  if(typeof clsOrFn==="string"){b.className=clsOrFn;fn=maybeFn}
+  b.onclick=fn;$("keys").appendChild(b);
+}
+function setScore(v,move){
+  const {h,p}=state.cursor;
+  state.scores[h][p]=v;
+  renderTable();
+  if(move){
+    let nh=h,np=p+1;
+    if(np>=state.count){np=0;nh=Math.min(17,h+1)}
+    state.cursor={h:nh,p:np};
+    if(!(h===17&&p===state.count-1))openModal(nh,np);
+    else $("modal").classList.remove("open");
+  }
+}
+$("closeBtn").onclick=()=> $("modal").classList.remove("open");
+$("prevBtn").onclick=()=>{
+  let {h,p}=state.cursor;p--;
+  if(p<0){p=state.count-1;h=Math.max(0,h-1)}
+  openModal(h,p);
+};
+$("nextBtn").onclick=()=>{
+  let {h,p}=state.cursor;p++;
+  if(p>=state.count){p=0;h=Math.min(17,h+1)}
+  openModal(h,p);
+};
+$("modal").onclick=e=>{if(e.target===$("modal"))$("modal").classList.remove("open")};
+$("clearBtn").onclick=()=>{
+  if(confirm("名前は残して、スコアだけ全部消しますか？")){
+    state.scores=Array.from({length:18},()=>Array(7).fill(null));renderTable();
+  }
+};
+$("swapBtn").onclick=()=>{document.querySelector(".member input")?.focus();window.scrollTo({top:0,behavior:"smooth"})};
+$("printBtn").onclick=()=>window.print();
+$("saveBtn").onclick=()=>{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));alert("この端末に保存しました。")};
+$("restoreBtn").onclick=()=>{
+  const raw=localStorage.getItem(STORAGE_KEY);
+  if(!raw)return alert("保存データがありません。");
+  try{state=JSON.parse(raw);renderAll();alert("保存データを読み込みました。")}catch(e){alert("読込に失敗しました。")}
+};
+document.body.classList.toggle("people5",state.count>=5);
 renderAll();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
-</body></html>
+</body>
+</html>

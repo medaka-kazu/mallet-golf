@@ -1,8 +1,22 @@
 {
-  "name": "マレットゴルフ Ver.2.0",
-  "short_name": "マレット2.0",
+  "name": "マレットゴルフ スコアアプリ Ver.2.0",
+  "short_name": "マレットゴルフ",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f7faf8",
-  "theme_color": "#0b6b3a"
+  "orientation": "any",
+  "background_color": "#f4f8f5",
+  "theme_color": "#136b3a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
