@@ -1,7 +1,7 @@
 {
   "name": "マレットゴルフ スコア表 Ver.1.5.3β",
   "short_name": "マレットゴルフ",
-  "start_url": "./",
+  "start_url": "./?v=153b",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#177245",
