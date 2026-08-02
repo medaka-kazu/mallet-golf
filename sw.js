@@ -1,4 +1,4 @@
-const CACHE='mallet-golf-v1.5.3-beta-20260802';
+const CACHE='mallet-golf-v2.0-20260802';
 const ASSETS=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
